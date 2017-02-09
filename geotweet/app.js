@@ -5,8 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var config = require('config');
+
+// import the routers
 var index = require('./routes/index');
-var users = require('./routes/users');
+var neo = require('./routes/neo4j');
 
 var app = express();
 
@@ -20,10 +23,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// this gets all partials and index.html in the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
+// register routers to root paths 
+app.use('/',index);
+app.use('/neo4j',neo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

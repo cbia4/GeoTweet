@@ -1,0 +1,19 @@
+<form ng-submit="runQuery()">
+	<div class="form-group text-center">
+		<label for="query">Enter A Query</label>
+		<input type="query" style="text-align: center" placeholder="Neo4j Query" class="form-control" ng-model="query" />
+	</div>
+	<div class="span7 text-center">
+		<input class="btn btn-primary" type="submit" value="Run" />
+	</div>
+</form>
+<div>
+	<input class="btn btn-primary" type="submit" value="Get Topics" ng-click="getTopics()" />
+</div>
+<div>
+	<ul>
+		<li ng-repeat="topic in topics">{{topic}}</li>
+	</ul>
+</div>
+
+
